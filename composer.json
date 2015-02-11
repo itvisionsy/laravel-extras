@@ -1,0 +1,17 @@
+{
+    "name": "itvisionsy/laravel-extras",
+    "description": "A set of extra tools and libraries to extend laravel functions.",
+    "authors": [
+        {
+            "name": "Muhannad Shelleh",
+            "email": "muhannad.shelleh@itvision-sy.com"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ItvisionSy\\LaravelExtras\\": "src/"
+        }
+    },
+    "require": {}
+}
