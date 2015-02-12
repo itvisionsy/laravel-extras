@@ -19,6 +19,7 @@ class Collection extends ECollection {
             return $this->presenter;
         } else {
             $this->presenter = !!$set;
+            return $this;
         }
     }
 
@@ -28,6 +29,12 @@ class Collection extends ECollection {
         } else {
             return new Iterator($this->items);
         }
+    }
+
+    public function paginate(\Illuminate\Database\Eloquent\Builder $query, $size = null) {
+        $paginator = $query->paginate($size);
+        $this->paginator($paginator);
+        return $paginator;
     }
 
     public function paginator(\Illuminate\Pagination\Paginator &$paginator) {
