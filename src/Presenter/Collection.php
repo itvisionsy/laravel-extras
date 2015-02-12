@@ -30,4 +30,13 @@ class Collection extends ECollection {
         }
     }
 
+    public function paginator(\Illuminate\Pagination\Paginator &$paginator) {
+        $items = [];
+        foreach ($this as $item) {
+            $items[] = $item;
+        }
+        $paginator->setItems($items);
+        return $paginator;
+    }
+
 }
