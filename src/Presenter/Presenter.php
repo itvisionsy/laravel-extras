@@ -26,7 +26,10 @@ abstract class Presenter {
                 return $this->model;
                 break;
             default:
-                $result = method_exists($this, "get" . ucfirst($name) . 'Attribute') ? call_user_func([$this, "get" . ucfirst($name) . 'Attribute']) : $this->model->$name;
+                $uc2ccName = implode('', array_map(function($value) {
+                            return ucfirst($value);
+                        }, explode('_', $name)));
+                $result = method_exists($this, "get" . $uc2ccName . 'Attribute') ? call_user_func([$this, "get" . $uc2ccName . 'Attribute']) : $this->model->$name;
                 if ($result instanceof Model && $result instanceof PresenterAwareInterface) {
                     $result = $result->presenter;
                 } elseif ($result instanceof Collection) {
