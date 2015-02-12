@@ -39,7 +39,10 @@ class Collection extends ECollection {
 
     public function paginator(\Illuminate\Pagination\Paginator &$paginator) {
         $items = [];
-        foreach ($this as $item) {
+        foreach ($this as $index => $item) {
+            if ($index < $paginator->getFrom() - 1 || $index > $paginator->getTo()) {
+                continue;
+            }
             $items[] = $item;
         }
         $paginator->setItems($items);
