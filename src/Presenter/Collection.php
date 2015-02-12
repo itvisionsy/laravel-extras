@@ -19,6 +19,7 @@ class Collection extends ECollection {
             return $this->presenter;
         } else {
             $this->presenter = !!$set;
+            return $this;
         }
     }
 
@@ -30,9 +31,18 @@ class Collection extends ECollection {
         }
     }
 
+    public function paginate(\Illuminate\Database\Eloquent\Builder $query, $size = null) {
+        $paginator = $query->paginate($size);
+        $this->paginator($paginator);
+        return $paginator;
+    }
+
     public function paginator(\Illuminate\Pagination\Paginator &$paginator) {
         $items = [];
-        foreach ($this as $item) {
+        foreach ($this as $index => $item) {
+            if ($index < $paginator->getFrom() - 1 || $index > $paginator->getTo()) {
+                continue;
+            }
             $items[] = $item;
         }
         $paginator->setItems($items);
