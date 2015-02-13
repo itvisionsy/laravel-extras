@@ -4,7 +4,6 @@ namespace ItvisionSy\LaravelExtras\ModelObserver;
 
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
-use function app_path;
 
 /**
  * Description of ModelObserverServiceProvider
