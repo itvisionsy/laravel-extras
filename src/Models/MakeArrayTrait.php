@@ -3,7 +3,6 @@
 namespace ItvisionSy\LaravelExtras\Models;
 
 use ReflectionClass;
-use function array_get;
 
 trait MakeArrayTrait {
 

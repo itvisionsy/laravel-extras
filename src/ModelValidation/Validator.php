@@ -3,7 +3,6 @@
 namespace ItvisionSy\LaravelExtras\ModelValidation;
 
 use Illuminate\Validation\Validator as CoreValidator;
-use function app;
 
 /**
  * Description of Validator
