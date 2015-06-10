@@ -52,4 +52,13 @@ abstract class Presenter {
     }
 
     abstract public function __toString();
+
+    public function getToStringAttribute() {
+        return $this->__toString();
+    }
+    
+    public function toString(){
+        return $this->__toString();
+    }
+
 }
