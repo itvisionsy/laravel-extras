@@ -30,7 +30,7 @@ trait PresenterAwareTrait {
     }
 
     public function newCollection(array $models = []) {
-        $collectionClass = $this->_presenterCollectionClassName();
+        $collectionClass = $this->collectionClassName();
         return new $collectionClass($models);
     }
 
