@@ -16,17 +16,21 @@ trait PresenterAwareTrait {
         return '\\ItvisionSy\\LaravelExtras\\Presenter\\Collection';
     }
 
+    protected function presenterClassName() {
+        $reflection = new ReflectionClass($this);
+        return $reflection->getNamespaceName() . "\\" . $reflection->getShortName() . "Presenter";
+    }
+
     public function getPresenterAttribute() {
         if ($this->presenter === null) {
-            $reflection = new ReflectionClass($this);
-            $presenterClassName = $reflection->getNamespaceName() . "\\" . $reflection->getShortName() . "Presenter";
+            $presenterClassName = $this->presenterClassName();
             $this->presenter = new $presenterClassName($this);
         }
         return $this->presenter;
     }
 
     public function newCollection(array $models = []) {
-        $collectionClass = $this->collectionClassName();
+        $collectionClass = $this->_presenterCollectionClassName();
         return new $collectionClass($models);
     }
 
